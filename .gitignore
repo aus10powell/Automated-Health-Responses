@@ -1,6 +1,11 @@
 
 .gitignore
 
+# Python Files #
+################
+.ipynb_checkpoints
+__pycache__/
+
 # Packages #
 ############
 *.7z
