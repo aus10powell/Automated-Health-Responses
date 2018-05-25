@@ -17,3 +17,6 @@ __pycache__/
 *.tar
 *.zip
 
+# Large data files #
+###################
+/data
