@@ -34,14 +34,14 @@ if __name__ == '__main__':
     df = load_data()
 
 
-    text_clf = Pipeline([('vect', CountVectorizer(lowercase=False,ngram_range=(1,3))),
+    text_clf = Pipeline([('vect', CountVectorizer(lowercase=True,ngram_range=(1,2),min_df=10)),
                          ('tfidf', TfidfTransformer()),
-                         ('clf', MultinomialNB())
+                         ('clf', ExtraTreesClassifier())
                         ])
 
     X_train, X_test, y_train, y_test = train_test_split(df['body'],df['is_clinician'] , test_size=0.2, random_state=329)
 
     print('training model...')
     print(X_train.shape)
-    scores = cross_val_score(text_clf, X_train, y_train, cv=6,n_jobs=10,scoring='f1_macro')
+    scores = cross_val_score(text_clf, X_train, y_train, cv=6,n_jobs=6,scoring='f1_macro')
     print("F1 macro: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
