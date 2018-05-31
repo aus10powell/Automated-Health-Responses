@@ -81,7 +81,11 @@ def tag_utterances(id,txt,tagger,sems = load_sem_types()):
     return data
 
 
-
-
-if __name__ == '__main__':
-    print('processing.py is being loaded directly')
+def load_comments():
+    """
+    Load comments from reddit dataset and process
+    """
+    import pandas as pd
+    
+    
+    
