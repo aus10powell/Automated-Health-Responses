@@ -81,11 +81,27 @@ def tag_utterances(id,txt,tagger,sems = load_sem_types()):
     return data
 
 
-def load_comments():
+def load_comments(path_to_comments=''):
     """
     Load comments from reddit dataset and process
     """
     import pandas as pd
     
+    assert len(path_to_comments) > 1
     
+    dataframe = pd.read_csv(path_to_comments,dtype={'body':str,'score_hidden':float},low_memory=False)
+    
+    # All posts with the same parent_id (following the "_") as the link_id are. 
+    # E.g. If the link_id is "t3_827pgt", all parent_id's with "827pgt" are pointing towards that original post.
+
+    dataframe['link_id_short'] = dataframe['link_id'].apply(lambda r: str(r).split('_')[1])
+    dataframe['parent_id_short'] = dataframe['parent_id'].apply(lambda r: str(r).split('_')[1])
+
+    # Double-check that there is no uniqueness lost when eliminating the t-tags
+    assert len(dataframe['link_id_short'].unique() == dataframe['link_id'].unique())
+    assert len(dataframe['parent_id_short'].unique() == dataframe['parent_id'].unique())
+    
+    print('Shape:',dataframe.shape)
+    
+    return dataframe
     
