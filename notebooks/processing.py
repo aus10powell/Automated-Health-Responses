@@ -93,9 +93,10 @@ def load_comments(path_to_comments=''):
     
     # All posts with the same parent_id (following the "_") as the link_id are. 
     # E.g. If the link_id is "t3_827pgt", all parent_id's with "827pgt" are pointing towards that original post.
-
     dataframe['link_id_short'] = dataframe['link_id'].apply(lambda r: str(r).split('_')[1])
     dataframe['parent_id_short'] = dataframe['parent_id'].apply(lambda r: str(r).split('_')[1])
+    # rename id column to be more transparent
+    dataframe['post_id'] = dataframe['id']
 
     # Double-check that there is no uniqueness lost when eliminating the t-tags
     assert len(dataframe['link_id_short'].unique() == dataframe['link_id'].unique())
