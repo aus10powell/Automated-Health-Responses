@@ -81,28 +81,92 @@ def tag_utterances(id,txt,tagger,sems = load_sem_types()):
     return data
 
 
-def load_comments(path_to_comments=''):
-    """
-    Load comments from reddit dataset and process
-    """
-    import pandas as pd
-    
-    assert len(path_to_comments) > 1
-    
-    dataframe = pd.read_csv(path_to_comments,dtype={'body':str,'score_hidden':float},low_memory=False)
-    
-    # All posts with the same parent_id (following the "_") as the link_id are. 
-    # E.g. If the link_id is "t3_827pgt", all parent_id's with "827pgt" are pointing towards that original post.
-    dataframe['link_id_short'] = dataframe['link_id'].apply(lambda r: str(r).split('_')[1])
-    dataframe['parent_id_short'] = dataframe['parent_id'].apply(lambda r: str(r).split('_')[1])
-    # rename id column to be more transparent
-    dataframe['post_id'] = dataframe['id']
 
-    # Double-check that there is no uniqueness lost when eliminating the t-tags
-    assert len(dataframe['link_id_short'].unique() == dataframe['link_id'].unique())
-    assert len(dataframe['parent_id_short'].unique() == dataframe['parent_id'].unique())
+
+import pandas as pd
+import os
+import sys
+import glob
+
+class DataPipeline:
+    """
+    Injest Reddit AskDocs Data
+    """
     
-    print('Shape:',dataframe.shape)
+    def __init__(self,comments_path='/',posts_path='/'):
+        self.comments_path = comments_path
+        self.posts_path = posts_path
+        
+        
+    def load_comments(self):
+        """
+        Load comments from reddit dataset and process.
+        """
+
+        assert len(self.comments_path) > 1
+
+        dataframe = pd.read_csv(self.comments_path,dtype={'body':str,'score_hidden':float},low_memory=False)
+
+        # All posts with the same parent_id (following the "_") as the link_id are. 
+        # E.g. If the link_id is "t3_827pgt", all parent_id's with "827pgt" are pointing towards that original post.
+        dataframe['link_id_short'] = dataframe['link_id'].apply(lambda r: str(r).split('_')[1])
+        dataframe['parent_id_short'] = dataframe['parent_id'].apply(lambda r: str(r).split('_')[1])
+        # rename id column to be more transparent
+        dataframe['post_id'] = dataframe['id']
+
+        # Double-check that there is no uniqueness lost when eliminating the t-tags
+        assert len(dataframe['link_id_short'].unique() == dataframe['link_id'].unique())
+        assert len(dataframe['parent_id_short'].unique() == dataframe['parent_id'].unique())
+
+        print('Comments Table Shape:',dataframe.shape)
+
+        return dataframe
     
-    return dataframe
+    def load_posts(self):
+        """
+        Load posts from reddit dataset and process.
+        """
+        dataframe = pd.read_csv(self.posts_path,low_memory=False)
+        dataframe['link_id_short'] = dataframe['id']
+        print('Posts table shape:',dataframe.shape)
+        return dataframe
     
+    def load_full_thread(self):
+        """
+        Loads a unified dataset of posts and comments tables. (comments tables do not contain original post)
+        """
+        
+        # import data
+
+        df_comments = self.load_comments()
+        df_posts = self.load_posts()
+
+        ## Get uniqueness
+        # Uniqueness among posts
+        comment_post_ids = [str(c).strip() for c in df_comments['link_id_short'].unique().tolist()]
+        post_ids = [str(c).strip() for c in df_posts['id'].unique().tolist()]
+
+        # Get set of ids that are in both tables:
+        id_intersect = (set(post_ids) & set(comment_post_ids))
+        print(len(id_intersect))
+
+        # Create table with only those intersect ids
+        df_intersect = df_posts.loc[df_posts['id'].isin(id_intersect)]
+        df_intersect = df_intersect.rename(index=str, columns={"selftext": "body"}).copy()
+        
+        # Create indicator column for join to identify if corpus is original post
+        df_intersect['is_thread_start'] = 1
+
+        # Deterimine which columns would be helpful in final table
+        columns_in_both = (set(df_comments.columns) & set(df_intersect.columns))
+        columns_in_both.update(["title","url","over_18","is_thread_start"])
+        columns_in_both = list(columns_in_both)
+
+        # Get comments following threads that are in both posts and comments
+        df_comments = df_comments.loc[df_comments['link_id_short'].isin(id_intersect)].copy()
+        # Get final intersect table
+        df_intersect = df_comments.append(df_intersect[columns_in_both]).copy()
+        df_intersect = df_intersect.fillna(value={'is_thread_start':0}).copy()
+        print('Final combined table shape:',df_intersect.shape)
+        
+        return df_intersect
