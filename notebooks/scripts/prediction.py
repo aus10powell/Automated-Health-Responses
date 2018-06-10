@@ -33,7 +33,6 @@ def load_data():
 if __name__ == '__main__':
     df = load_data()
 
-
     text_clf = Pipeline([('vect', CountVectorizer(lowercase=True,ngram_range=(1,2),min_df=10)),
                          ('tfidf', TfidfTransformer()),
                          ('clf', MultinomialNB())
