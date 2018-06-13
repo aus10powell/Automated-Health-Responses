@@ -56,9 +56,9 @@ import numpy as np
 import h5py
 
 batch_size = 16  # Batch size for training.
-epochs = 19  # Number of epochs to train for.
+epochs = 29  # Number of epochs to train for.
 latent_dim = 256  # Latent dimensionality of the encoding space.
-num_samples = 20000  # Number of samples to train on.
+num_samples = 8000  # Number of samples to train on.
 # Path to the data txt file on disk.
 data_path = 'fra-eng/all_responses_equal.txt'
 
@@ -221,7 +221,9 @@ def decode_sequence(input_seq):
     return decoded_sentence
 
 
-for seq_index in range(100):
+
+print("Examples from training set:")
+for seq_index in range(0,100):
     # Take one sequence (part of the training set)
     # for trying out decoding.
     input_seq = encoder_input_data[seq_index: seq_index + 1]

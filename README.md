@@ -7,7 +7,11 @@
 ### Data/Resources:
 * QuickUMLS (https://github.com/Georgetown-IR-Lab/QuickUMLS). A package to make accessing a huge medical concept database, UMLS (https://www.nlm.nih.gov/research/umls/)
 * Data is from a subReddit: AskDoc. Downloaded from Google's Big Query (https://bigquery.cloud.google.com/table/fh-bigquery:reddit_posts.full_corpus_201509?pli=1). Data was up to 04-2018.
-* Tensorflow (https://www.tensorflow.org/)
+* Seq2Seq
+  * TF Seq2Seq models: https://www.tensorflow.org/versions/r1.0/tutorials/seq2seq#tensorflow_seq2seq_library
+  * Contextualizing Chatbots (creating intents): https://chatbotsmagazine.com/contextual-chat-bots-with-tensorflow-4391749d0077
+
+
 
 ### Notes about the dataset
 * Threads may have more than their share of topics of a sexual nature. Could easily be assumed because of the anonymity of reddit.
@@ -19,4 +23,11 @@
     * *Static unrolling involves construction of computation graph with a fixed sequence of time step. Such a graph can only handle sequences of specific lengths. One solution for handling sequences of varying lengths is to create multiple graphs with different time lengths and separate the dataset into this buckets.*
     * *Action:* Use **Dynamic Unrolling** Dynamic unrolling instead uses control flow ops to process sequence step by step. In TF this is supposed to more space efficient and just as fast. This is now a recommended way to implement RNNs.
 * Week of June 10:
-  * So far just using a character-level, teacher-forcing for 1 step ahead Seq2Seq is doing reasonably well (currently based primarily off the reasonableness of responses to training set). This is currently serving as a baseline when deciding further directions to pursue.  
+  * So far just using a character-level, teacher-forcing for 1 step ahead Seq2Seq is doing reasonably well (currently based primarily off the reasonableness of responses to training set). This is currently serving as a baseline when deciding further directions to pursue.
+    * There are some issues with current data approach since the model is tending to generalize to a politically phrased response: "I'm not a doctor but"
+      * **Q: Husband deteriorating before my eyes, doctors at a loss, no one will help; Reddit docs, I need you.**
+      * **A: I don't think this is a single pain is not a doctor but I have a similar symptoms and the story**
+      * **Q: pleomorphic adenoma and a little scared**
+      * **A: I don't think this is a single pain is not a doctor but I have a similar symptoms and the story**
+      * **Q: I think I have Strep Throat. I do not have insurance and I cannot afford to go to the doctor.**
+      * **A: I don't think this is a single pain is not a doctor but I have a similar symptoms and the story**
