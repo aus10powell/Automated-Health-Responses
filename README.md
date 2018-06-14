@@ -10,6 +10,8 @@
 * Seq2Seq
   * TF Seq2Seq models: https://www.tensorflow.org/versions/r1.0/tutorials/seq2seq#tensorflow_seq2seq_library
   * Contextualizing Chatbots (creating intents): https://chatbotsmagazine.com/contextual-chat-bots-with-tensorflow-4391749d0077
+  * Dynamic Unrolling with Seq2Seq: https://github.com/ematvey/tensorflow-seq2seq-tutorials
+  * Great *Alignment* explanation https://machinelearningmastery.com/how-does-attention-work-in-encoder-decoder-recurrent-neural-networks/
 
 
 
