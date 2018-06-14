@@ -16,7 +16,9 @@
 
 
 ### Notes about the dataset
-* Threads may have more than their share of topics of a sexual nature. Could easily be assumed because of the anonymity of reddit.
+
+*Warning:* Data from this forum may have more than its share of topics of a sexual nature. (Could easily be assumed because of the anonymity of reddit.)
+
 
 ### Data Journal
 * Week of June 1:
@@ -33,3 +35,4 @@
       * **A: I don't think this is a single pain is not a doctor but I have a similar symptoms and the story**
       * **Q: I think I have Strep Throat. I do not have insurance and I cannot afford to go to the doctor.**
       * **A: I don't think this is a single pain is not a doctor but I have a similar symptoms and the story**
+  * As suspected, even with seq2seq at a word level, we are getting not so great results. Although have not trained on full dataset yet, there is a decided improvement when using less than 30 words for response. One option would be change pipeline and limit words and sentences. However I suspect the bigger issue is that many posts to initial post are not direct responses. Structuring data using as parent/post might be the right approach to try first.
