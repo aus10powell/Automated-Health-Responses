@@ -19,6 +19,7 @@
 
 *Warning:* Data from this forum may have more than its share of topics of a sexual nature. (Could easily be assumed because of the anonymity of reddit.)
 
+Data is from when the subreddit was started (2014) to early 2018. There are approximately 30k threads, 109k responses.
 
 ### Data Journal
 * Week of June 1:
