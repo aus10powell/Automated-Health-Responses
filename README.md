@@ -1,4 +1,6 @@
 # Automated-Health-Responses
+Beyond the catch-all classification of "chatbot", there are some different flavors: *sentence completion, Q/A, dialogue goal-oriented, VQA (or visual dialogue), negotiation, Machine Translation*
+
 
 **<u>Description:</u> A prototype project for automated, physician-like responses to medical questions**
 
