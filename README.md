@@ -24,12 +24,12 @@ Beyond the catch-all classification of "chatbot", there are some different flavo
 Data is from when the subreddit was started (2014) to early 2018. There are approximately 30k threads, 109k responses.
 
 ### Data Journal
-* **1st Week:**
+* **1st Iteration:**
   * Decided on architecture for data prep on first model for conversations. We frame the problem as bootstrapping responses to conversations in a general sense of someone who has a health-related question and someone who has some sort of knowledge on the subject. Given that there are multiple responses to potential the same question, the first pass is: someone asks a question on reddit thread and everyone post in that thread _not_ by the author is encoded as a response. This is a big consideration of what we could reasonably expect from a trained network. We are obviously over-sampling questions perhaps giving the network incentive to learn the most generic response to a random question
   * Found out reference code for the Tensorflow Seq2Seq model was depreciated because it uses *static unrolling:*
     * *Static unrolling involves construction of computation graph with a fixed sequence of time step. Such a graph can only handle sequences of specific lengths. One solution for handling sequences of varying lengths is to create multiple graphs with different time lengths and separate the dataset into this buckets.*
     * *Action:* Use **Dynamic Unrolling** Dynamic unrolling instead uses control flow ops to process sequence step by step. In TF this is supposed to more space efficient and just as fast. This is now a recommended way to implement RNNs.
-* **2nd Week:**
+* **2nd Iteration:**
   * So far just using a character-level, teacher-forcing for 1 step ahead Seq2Seq is doing reasonably well (currently based primarily off the reasonableness of responses to training set). This is currently serving as a baseline when deciding further directions to pursue.
     * There are some issues with current data approach since the model is tending to generalize to a politically phrased response: "I'm not a doctor but"
       * **Q: Husband deteriorating before my eyes, doctors at a loss, no one will help; Reddit docs, I need you.**
@@ -39,8 +39,8 @@ Data is from when the subreddit was started (2014) to early 2018. There are appr
       * **Q: I think I have Strep Throat. I do not have insurance and I cannot afford to go to the doctor.**
       * **A: I don't think this is a single pain is not a doctor but I have a similar symptoms and the story**
   * As suspected, even with seq2seq at a word level, we are getting not so great results. Although have not trained on full dataset yet, there is a decided improvement when using less than 30 words for response. One option would be change pipeline and limit words and sentences. However I suspect the bigger issue is that many posts to initial post are not direct responses. Structuring data using as parent/post might be the right approach to try first.
-* **3rd Week:**
+* **3rd Iteration:**
   * Altered dataset so each post that had a comment posted as reply is treated as direct response. So occasionally one comment may be both a query and a response. Test training at a word level without any cleansing of data lead to very poor results as expected.
 
-* **4th Week**
+* **4th Iteration**
   * This week is going
