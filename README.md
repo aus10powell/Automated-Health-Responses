@@ -9,11 +9,14 @@ Beyond the catch-all classification of "chatbot", there are some different flavo
 ### Data/Resources:
 * QuickUMLS (https://github.com/Georgetown-IR-Lab/QuickUMLS). A package to make accessing a huge medical concept database, UMLS (https://www.nlm.nih.gov/research/umls/)
 * Data is from a subReddit: AskDoc. Downloaded from Google's Big Query (https://bigquery.cloud.google.com/table/fh-bigquery:reddit_posts.full_corpus_201509?pli=1). Data was up to 04-2018.
-* Seq2Seq
+* **Seq2Seq**
   * TF Seq2Seq models: https://www.tensorflow.org/versions/r1.0/tutorials/seq2seq#tensorflow_seq2seq_library
   * Contextualizing Chatbots (creating intents): https://chatbotsmagazine.com/contextual-chat-bots-with-tensorflow-4391749d0077
   * Dynamic Unrolling with Seq2Seq: https://github.com/ematvey/tensorflow-seq2seq-tutorials
   * Great *Alignment* explanation https://machinelearningmastery.com/how-does-attention-work-in-encoder-decoder-recurrent-neural-networks/
+* **Papers**
+  * Continuing a conversation beyond simple Q/A *LEARNING THROUGH DIALOGUE INTERACTIONS BY ASKING QUESTIONS* https://arxiv.org/pdf/1612.04936.pdf
+  
 
 
 

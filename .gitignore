@@ -20,3 +20,8 @@ __pycache__/
 # Large data files #
 ###################
 /data
+
+# Temporary #
+#############
+notebooks/brainstorming_notebooks
+
