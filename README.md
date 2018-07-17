@@ -15,9 +15,16 @@ Beyond the catch-all classification of "chatbot", there are some different flavo
   * Dynamic Unrolling with Seq2Seq: https://github.com/ematvey/tensorflow-seq2seq-tutorials
   * Great *Alignment* explanation https://machinelearningmastery.com/how-does-attention-work-in-encoder-decoder-recurrent-neural-networks/
 * **Papers**
-  * Continuing a conversation beyond simple Q/A *LEARNING THROUGH DIALOGUE INTERACTIONS BY ASKING QUESTIONS* https://arxiv.org/pdf/1612.04936.pdf
-  
+  * Getting Started:
+    * Continuing a conversation beyond simple Q/A *LEARNING THROUGH DIALOGUE INTERACTIONS BY ASKING QUESTIONS* https://arxiv.org/pdf/1612.04936.pdf
+    * Kindof a long read but more detail than you'd get in the standard published paper *Teaching Machines to Converse* https://github.com/jiweil/Jiwei-Thesis/blob/master/thesis.pdf
 
+### Notes About Approaches
+* Dialogue systems (which include chatbots) generally can be classified under three categories:
+  * The back-and-forth dialogue between algorithm and human
+  * The frame-based, goal-oriented (think online help or call-routing)
+  * The interactive Q/A system.
+* The mechanism to generate the machine response to these systems can be generative (the machine comes up with its own response), or responsive (returns a pre-determined answer based on a classification). Most succesful systems seem to have a combination of the two.
 
 
 ### Notes about the dataset
@@ -46,4 +53,4 @@ Data is from when the subreddit was started (2014) to early 2018. There are appr
   * Altered dataset so each post that had a comment posted as reply is treated as direct response. So occasionally one comment may be both a query and a response. Test training at a word level without any cleansing of data lead to very poor results as expected.
 
 * **4th Iteration**
-  * Summer is here.
+  * Working on 3rd data for response-type system.
