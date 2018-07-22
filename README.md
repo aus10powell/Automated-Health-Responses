@@ -18,13 +18,16 @@ Beyond the catch-all classification of "chatbot", there are some different flavo
   * Getting Started:
     * Continuing a conversation beyond simple Q/A *LEARNING THROUGH DIALOGUE INTERACTIONS BY ASKING QUESTIONS* https://arxiv.org/pdf/1612.04936.pdf
     * Kindof a long read but more detail than you'd get in the standard published paper *Teaching Machines to Converse* https://github.com/jiweil/Jiwei-Thesis/blob/master/thesis.pdf
+    * **Retrieval-Based**
+      * Main 2015 paper: https://arxiv.org/abs/1506.08909
+        * Follow-up to 2015 paper using same dataset to benchmark some clustering and hierarchical methods: https://arxiv.org/pdf/1710.03430.pdf
 
 ### Notes About Approaches
 * Dialogue systems (which include chatbots) generally can be classified under three categories:
   * The back-and-forth dialogue between algorithm and human
   * The frame-based, goal-oriented (think online help or call-routing)
   * The interactive Q/A system.
-* The mechanism to generate the machine response to these systems can be generative (the machine comes up with its own response), or responsive (returns a pre-determined answer based on a classification). Most succesful systems seem to have a combination of the two.
+* The mechanism to generate the machine response to these systems can be generative (the machine comes up with its own response), or responsive (returns a pre-determined answer based on a classification). Most successful systems seem to have a combination of the two.
 
 
 ### Notes about the dataset
