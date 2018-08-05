@@ -28,6 +28,7 @@ Beyond the catch-all classification of "chatbot", there are some different flavo
   * The frame-based, goal-oriented (think online help or call-routing)
   * The interactive Q/A system.
 * The mechanism to generate the machine response to these systems can be generative (the machine comes up with its own response), or responsive (returns a pre-determined answer based on a classification). Most successful systems seem to have a combination of the two.
+* Probably anyone with a smartphone searches online for something relating to their health. Although the first page, second page, wikipedia article or any one page may not be helpful, the process may itself reveal to the individual important insights: http://matjournals.in/index.php/JoWDWD/article/view/2334
 
 
 ### Notes about the dataset

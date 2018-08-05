@@ -23,5 +23,5 @@ __pycache__/
 
 # Temporary #
 #############
-notebooks/brainstorming_notebooks
-
+notebooks/brainstorming_notebooks/*
+!notebooks/brainstorming_notebooks/dual_encoder_udc/*
