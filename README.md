@@ -21,6 +21,7 @@ Beyond the catch-all classification of "chatbot", there are some different flavo
     * **Retrieval-Based**
       * Main 2015 paper: https://arxiv.org/abs/1506.08909
         * Follow-up to 2015 paper using same dataset to benchmark some clustering and hierarchical methods: https://arxiv.org/pdf/1710.03430.pdf
+      * Google's "Smart Reply" method for clustering email responses: http://www.kdd.org/kdd2016/papers/files/Paper_1069.pdf
 
 ### Notes About Approaches
 * Dialogue systems (which include chatbots) generally can be classified under three categories:
@@ -57,4 +58,4 @@ Data is from when the subreddit was started (2014) to early 2018. There are appr
   * Altered dataset so each post that had a comment posted as reply is treated as direct response. So occasionally one comment may be both a query and a response. Test training at a word level without any cleansing of data lead to very poor results as expected.
 
 * **4th Iteration**
-  * Working on 3rd data for response-type system.
+  * Successfully implemented dual_encoder with large improvements over baseline
