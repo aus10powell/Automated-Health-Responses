@@ -20,6 +20,8 @@ __pycache__/
 # Large data files #
 ###################
 /data
+/dual_encoder_udc/option3_dataset/*
+/dual_encoder_udc/embeddings/*
 
 # Temporary #
 #############
