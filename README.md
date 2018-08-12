@@ -58,4 +58,20 @@ Data is from when the subreddit was started (2014) to early 2018. There are appr
   * Altered dataset so each post that had a comment posted as reply is treated as direct response. So occasionally one comment may be both a query and a response. Test training at a word level without any cleansing of data lead to very poor results as expected.
 
 * **4th Iteration**
-  * Successfully implemented dual_encoder with large improvements over baseline
+  * Successfully implemented dual_encoder with large improvements over baseline:
+    * Random Baseline:
+      * Recall @ (1, 10): 0.100675
+      * Recall @ (2, 10): 0.2
+      * Recall @ (5, 10): 0.399273
+    * TF-IDF baseline:
+      * Recall @ (1, 10): 0.476141
+      * Recall @ (2, 10): 0.570431
+      * Recall @ (5, 10): 0.722859
+    * Dual Encoder with 6B 300d Glove:
+      * Recall @ (1,10): 0.61527
+      * Recall @ (2,10) 0.77616
+      * Recall @ (5,10) 0.944514
+    * Dual Encoder with 840B 300d Glove:
+      * Recall @ (1,10): 0.715415
+      * Recall @ (2,10) 0.87425
+      * Recall @ (5,10) 0.974819
