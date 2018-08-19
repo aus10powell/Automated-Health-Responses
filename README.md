@@ -45,19 +45,13 @@ Data is from when the subreddit was started (2014) to early 2018. There are appr
     * *Static unrolling involves construction of computation graph with a fixed sequence of time step. Such a graph can only handle sequences of specific lengths. One solution for handling sequences of varying lengths is to create multiple graphs with different time lengths and separate the dataset into this buckets.*
     * *Action:* Use **Dynamic Unrolling** Dynamic unrolling instead uses control flow ops to process sequence step by step. In TF this is supposed to more space efficient and just as fast. This is now a recommended way to implement RNNs.
 * **2nd Iteration:**
-  * So far just using a character-level, teacher-forcing for 1 step ahead Seq2Seq is doing reasonably well (currently based primarily off the reasonableness of responses to training set). This is currently serving as a baseline when deciding further directions to pursue.
+  * So far just using a word-level, teacher-forcing for 1 step ahead Seq2Seq is doing not well (currently based primarily off the reasonableness of responses to training set), but understandably at least. This is currently serving as a baseline when deciding further directions to pursue.
     * There are some issues with current data approach since the model is tending to generalize to a politically phrased response: "I'm not a doctor but"
       * **Q: Husband deteriorating before my eyes, doctors at a loss, no one will help; Reddit docs, I need you.**
       * **A: I don't think this is a single pain is not a doctor but I have a similar symptoms and the story**
-      * **Q: pleomorphic adenoma and a little scared**
-      * **A: I don't think this is a single pain is not a doctor but I have a similar symptoms and the story**
-      * **Q: I think I have Strep Throat. I do not have insurance and I cannot afford to go to the doctor.**
-      * **A: I don't think this is a single pain is not a doctor but I have a similar symptoms and the story**
   * As suspected, even with seq2seq at a word level, we are getting not so great results. Although have not trained on full dataset yet, there is a decided improvement when using less than 30 words for response. One option would be change pipeline and limit words and sentences. However I suspect the bigger issue is that many posts to initial post are not direct responses. Structuring data using as parent/post might be the right approach to try first.
-* **3rd Iteration:**
+* **3rd Iteration: Response Retrieval**
   * Altered dataset so each post that had a comment posted as reply is treated as direct response. So occasionally one comment may be both a query and a response. Test training at a word level without any cleansing of data lead to very poor results as expected.
-
-* **4th Iteration**
   * Successfully implemented dual_encoder with large improvements over baseline:
     * Random Baseline:
       * Recall @ (1, 10): 0.100675
@@ -75,6 +69,10 @@ Data is from when the subreddit was started (2014) to early 2018. There are appr
       * Recall @ (1,10): 0.715415
       * Recall @ (2,10) 0.87425
       * Recall @ (5,10) 0.974819
+
+    Of course since current implementation of the model is binary (predicting out of 10 possible choices whether the response is correct or not), it really only makes sense to pay attention to Recall@1.
+* **4th Iteration: Improving Relevancy of what Response Retrieval is...well, retrieving**
+
 
 ### Future Work:
   * One big issue with trying to generated responses to queries is determining which are queries and which are responses. Using word embeddings and computing a similarity score using the Word Movers Algorithm, we can get very similar types of phrases to a type of query. Example below:
