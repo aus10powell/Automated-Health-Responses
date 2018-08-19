@@ -54,6 +54,12 @@ Data is from when the subreddit was started (2014) to early 2018. There are appr
 * **3rd Iteration: Response Retrieval**
   * Altered dataset so each post that had a comment posted as reply is treated as direct response. So occasionally one comment may be both a query and a response. Test training at a word level without any cleansing of data lead to very poor results as expected.
   * Successfully implemented dual_encoder with large improvements over baseline:
+    * *Training Notes:*
+      * Substantial gains were made by:
+        * Adding dropout of 0.5 for the hidden layer
+        * Switching to GRU RNN vs LSTM
+        * Halving the number of neurons for the 1 hidden layer. Incidentally, this also dramatically decreased training time due to decrease matrix computation.
+
     * Random Baseline:
       * Recall @ (1, 10): 0.100675
       * Recall @ (2, 10): 0.2
