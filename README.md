@@ -75,3 +75,11 @@ Data is from when the subreddit was started (2014) to early 2018. There are appr
       * Recall @ (1,10): 0.715415
       * Recall @ (2,10) 0.87425
       * Recall @ (5,10) 0.974819
+
+### Future Work:
+  * One big issue with trying to generated responses to queries is determining which are queries and which are responses. Using word embeddings and computing a similarity score using the Word Movers Algorithm, we can get very similar types of phrases to a type of query. Example below:
+  * Examples of a seed question that could be classified as inquiring about further information:
+    * Seed: *"Hey, how's your husband doing now? Hope everything is okay."*
+    * *"So why are you posting on here then, if you had two 'real' doctors giving you advice? What answer are you looking for here? "*
+    * *'How long ago did you change your diet, as in when did you have the kidney stones?'*
+    * *'How old is your partner?\n\nDo you know her diagnosis (ie why they did her surgery)?',*
