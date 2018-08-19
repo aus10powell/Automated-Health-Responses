@@ -22,6 +22,7 @@ Beyond the catch-all classification of "chatbot", there are some different flavo
       * Main 2015 paper: https://arxiv.org/abs/1506.08909
         * Follow-up to 2015 paper using same dataset to benchmark some clustering and hierarchical methods: https://arxiv.org/pdf/1710.03430.pdf
       * Google's "Smart Reply" method for clustering email responses: http://www.kdd.org/kdd2016/papers/files/Paper_1069.pdf
+      * Clustering by extracted entities: https://www.cs.utexas.edu/~ckcuong/Publications/Text%20Clustering%20with%20Named%20Entities.pdf
 
 ### Notes About Approaches
 * Dialogue systems (which include chatbots) generally can be classified under three categories:
