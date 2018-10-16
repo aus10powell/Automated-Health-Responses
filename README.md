@@ -27,6 +27,12 @@ Beyond the catch-all classification of "chatbot", there are some different flavo
         * Follow-up to 2015 paper using same dataset to benchmark some clustering and hierarchical methods: https://arxiv.org/pdf/1710.03430.pdf
       * Google's "Smart Reply" method for clustering email responses: http://www.kdd.org/kdd2016/papers/files/Paper_1069.pdf
       * Clustering by extracted entities: https://www.cs.utexas.edu/~ckcuong/Publications/Text%20Clustering%20with%20Named%20Entities.pdf
+      * Chatbot with TF: https://chatbotsmagazine.com/contextual-chat-bots-with-tensorflow-4391749d0077
+      * Good reference list for reading: http://www.wildml.com/2016/04/deep-learning-for-chatbots-part-1-introduction/
+      * **Chameleon paper:**http://www.cs.cornell.edu/~cristian/papers/chameleons.pdf
+      * **Pandas pipelines:**https://medium.com/bigdatarepublic/integrating-pandas-and-scikit-learn-with-pipelines-f70eb6183696
+
+
 
 ### Notes About Approaches
 * Dialogue systems (which include chatbots) generally can be classified under three categories:
