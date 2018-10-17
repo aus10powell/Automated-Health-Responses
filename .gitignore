@@ -23,10 +23,10 @@ __pycache__/
 *.bin
 *.h5
 *.txt
-/model
 /data
 /dual_encoder_udc/option3_dataset/*
 /dual_encoder_udc/embeddings/*
+/dual_encoder_udc/model/*
 /pybay2018
 
 # Temporary #
