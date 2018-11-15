@@ -90,6 +90,9 @@ Data is from when the subreddit was started (2014) to early 2018. There are appr
     Of course since current implementation of the model is binary (predicting out of 10 possible choices whether the response is correct or not), it really only makes sense to pay attention to Recall@1.
 * **4th Iteration: Improving Relevancy of what Response Retrieval is...well, retrieving**
 
+### (Edit as of 11/15/18)
+Some of the analysis on this data has indicated that there may be a high amount of mental problems/emotional issues that people are posting about. Given that this is a fairly big topic today. I am doing investigation into either emotion or mental subcategories of postings. Particularly using something with Plutchik's Wheel of Emotion (HERE)[https://positivepsychologyprogram.com/emotion-wheel/]
+
 
 ### Future Work:
   * One big issue with trying to generated responses to queries is determining which are queries and which are responses. Using word embeddings and computing a similarity score using the Word Movers Algorithm, we can get very similar types of phrases to a type of query. Example below:
