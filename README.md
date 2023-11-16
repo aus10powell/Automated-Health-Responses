@@ -1,38 +1,43 @@
 # Automated-Health-Responses
-Beyond the catch-all classification of "chatbot", there are some different flavors: *sentence completion, Q/A, dialogue goal-oriented, VQA (or visual dialogue), negotiation, Machine Translation*
+Beyond the catch-all classification of "chatbot," this project explores various flavors, including sentence completion, Q/A, dialogue goal-oriented, VQA (visual dialogue), negotiation, and Machine Translation.
 
-
-**<u>Description:</u> A prototype project for automated, physician-like responses to medical questions**
-
-## Getting Started:
-* Clone repository
-*
+**Description:**
+A prototype project aiming to provide automated, physician-like responses to medical questions.
 
 ### Data:
-* QuickUMLS (https://github.com/Georgetown-IR-Lab/QuickUMLS). A package to make accessing a huge medical concept database, UMLS (https://www.nlm.nih.gov/research/umls/)
-* Data is from a subReddit: AskDoc. Downloaded from Google's Big Query (https://bigquery.cloud.google.com/table/fh-bigquery:reddit_posts.full_corpus_201509?pli=1). Data was up to 04-2018.
+* QuickUMLS: A package for accessing a vast medical concept database, UMLS ([QuickUMLS GitHub](https://github.com/Georgetown-IR-Lab/QuickUMLS))
+* Data source: AskDoc subreddit. Downloaded from Google's Big Query ([AskDoc on Big Query](https://bigquery.cloud.google.com/table/fh-bigquery:reddit_posts.full_corpus_201509?pli=1)) up to 04-2018.
 
 ### Research:
-* **Seq2Seq**
-  * TF Seq2Seq models: https://www.tensorflow.org/versions/r1.0/tutorials/seq2seq#tensorflow_seq2seq_library
-  * Contextualizing Chatbots (creating intents): https://chatbotsmagazine.com/contextual-chat-bots-with-tensorflow-4391749d0077
-  * Dynamic Unrolling with Seq2Seq: https://github.com/ematvey/tensorflow-seq2seq-tutorials
-  * Great *Alignment* explanation https://machinelearningmastery.com/how-does-attention-work-in-encoder-decoder-recurrent-neural-networks/
-* **Papers**
-  * Getting Started:
-    * Continuing a conversation beyond simple Q/A *LEARNING THROUGH DIALOGUE INTERACTIONS BY ASKING QUESTIONS* https://arxiv.org/pdf/1612.04936.pdf
-    * Kindof a long read but more detail than you'd get in the standard published paper *Teaching Machines to Converse* https://github.com/jiweil/Jiwei-Thesis/blob/master/thesis.pdf
-    * **Retrieval-Based**
-      * Main 2015 paper: https://arxiv.org/abs/1506.08909
-        * Follow-up to 2015 paper using same dataset to benchmark some clustering and hierarchical methods: https://arxiv.org/pdf/1710.03430.pdf
-      * Google's "Smart Reply" method for clustering email responses: http://www.kdd.org/kdd2016/papers/files/Paper_1069.pdf
-      * Clustering by extracted entities: https://www.cs.utexas.edu/~ckcuong/Publications/Text%20Clustering%20with%20Named%20Entities.pdf
-      * Chatbot with TF: https://chatbotsmagazine.com/contextual-chat-bots-with-tensorflow-4391749d0077
-      * Good reference list for reading: http://www.wildml.com/2016/04/deep-learning-for-chatbots-part-1-introduction/
-      * **Chameleon paper:**http://www.cs.cornell.edu/~cristian/papers/chameleons.pdf
-      * **Pandas pipelines:**https://medium.com/bigdatarepublic/integrating-pandas-and-scikit-learn-with-pipelines-f70eb6183696
+#### Seq2Seq
+* TensorFlow Seq2Seq models: [TensorFlow Seq2Seq](https://www.tensorflow.org/versions/r1.0/tutorials/seq2seq#tensorflow_seq2seq_library)
+* Contextualizing Chatbots (creating intents): [Chatbots Magazine](https://chatbotsmagazine.com/contextual-chat-bots-with-tensorflow-4391749d0077)
+* Dynamic Unrolling with Seq2Seq: [GitHub - Dynamic Unrolling](https://github.com/ematvey/tensorflow-seq2seq-tutorials)
+* [Alignment explanation](https://machinelearningmastery.com/how-does-attention-work-in-encoder-decoder-recurrent-neural-networks/)
 
+#### Papers
+* [Learning Through Dialogue Interactions by Asking Questions](https://arxiv.org/pdf/1612.04936.pdf)
+* [Teaching Machines to Converse](https://github.com/jiweil/Jiwei-Thesis/blob/master/thesis.pdf)
+* * Good reference list for reading: http://www.wildml.com/2016/04/deep-learning-for-chatbots-part-1-introduction/
+* **Retrieval-Based**
+  * [Main 2015 paper](https://arxiv.org/abs/1506.08909)
+  * [Follow-up to 2015 paper](https://arxiv.org/pdf/1710.03430.pdf)
+  * [Google's "Smart Reply" method](http://www.kdd.org/kdd2016/papers/files/Paper_1069.pdf)
+  * [Clustering by extracted entities](https://www.cs.utexas.edu/~ckcuong/Publications/Text%20Clustering%20with%20Named%20Entities.pdf)
+  * [Chatbot with TF](https://chatbotsmagazine.com/contextual-chat-bots-with-tensorflow-4391749d0077)
+  * [Chameleon paper](http://www.cs.cornell.edu/~cristian/papers/chameleons.pdf)
+  * [Pandas pipelines](https://medium.com/bigdatarepublic/integrating-pandas-and-scikit-learn-with-pipelines-f70eb6183696)
 
+### Notes About Approaches
+* Dialogue systems, including chatbots, can be classified under three categories:
+  * Back-and-forth dialogue between algorithm and human
+  * Frame-based, goal-oriented (e.g., online help or call-routing)
+  * Interactive Q/A system.
+* Mechanism to generate machine response can be generative or responsive. Successful systems often combine both.
+
+### Notes about the Dataset
+* **Warning:** Data from the AskDoc forum may have explicit content due to the anonymity of Reddit.
+* Data: From the subreddit's inception (2014) to early 2018, comprising approximately 30k threads and 109k responses.
 
 ### Notes About Approaches
 * Dialogue systems (which include chatbots) generally can be classified under three categories:
@@ -41,7 +46,6 @@ Beyond the catch-all classification of "chatbot", there are some different flavo
   * The interactive Q/A system.
 * The mechanism to generate the machine response to these systems can be generative (the machine comes up with its own response), or responsive (returns a pre-determined answer based on a classification). Most successful systems seem to have a combination of the two.
 * Probably anyone with a smartphone searches online for something relating to their health. Although the first page, second page, wikipedia article or any one page may not be helpful, the process may itself reveal to the individual important insights: http://matjournals.in/index.php/JoWDWD/article/view/2334
-
 
 ### Notes about the dataset
 
@@ -91,15 +95,14 @@ Data is from when the subreddit was started (2014) to early 2018. There are appr
 * **4th Iteration: Improving Relevancy of what Response Retrieval is...well, retrieving**
 
 ### (Edit as of 11/15/18)
-Some of the analysis on this data has indicated that there may be a high amount of mental problems/emotional issues that people are posting about. Given that this is a fairly big topic today. I am doing investigation into either emotion or mental subcategories of postings. Particularly using something with Plutchik's Wheel of Emotion (HERE)[https://positivepsychologyprogram.com/emotion-wheel/]
-
+Analysis suggests a high prevalence of mental health topics. Investigating emotional subcategories using Plutchik's Wheel of Emotion ([Emotion Wheel](https://positivepsychologyprogram.com/emotion-wheel/)).
 
 ### Future Work:
+* Addressing challenges in generating responses to queries, exploring word embeddings, and utilizing the Word Movers Algorithm for similarity scoring.
+* Investigating mental health and emotional subcategories in forum postings.
   * One big issue with trying to generated responses to queries is determining which are queries and which are responses. Using word embeddings and computing a similarity score using the Word Movers Algorithm, we can get very similar types of phrases to a type of query. Example below:
   * Examples of a seed question that could be classified as inquiring about further information:
     * Seed: *"Hey, how's your husband doing now? Hope everything is okay."*
     * *"So why are you posting on here then, if you had two 'real' doctors giving you advice? What answer are you looking for here? "*
     * *'How long ago did you change your diet, as in when did you have the kidney stones?'*
     * *'How old is your partner?\n\nDo you know her diagnosis (ie why they did her surgery)?',*
-
-## Acknowledgements
